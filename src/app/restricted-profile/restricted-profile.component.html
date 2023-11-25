@@ -1,5 +1,14 @@
-<div *ngIf="userDetails">
-    <h2>About user</h2>
-    <p>Nome: {{ userDetails.name }}</p>
-    <p>E-mail: {{ userDetails.email }}</p>
+<div class="container">
+    <div *ngIf="userData">
+        <ul class="list-group">
+            <li class="list-group-item active" aria-current="true">About user</li>
+            <li class="list-group-item">Name: {{ userData.name }}</li>
+            <li class="list-group-item">Email: {{ userData.email }}</li>
+        </ul>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button (click)="logout()" type="button" class="btn btn-logout btn-primary">Logout</button>
+    </div>
+
 </div>
+

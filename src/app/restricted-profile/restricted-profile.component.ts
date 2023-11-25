@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { UserService } from '../shared/user.service';
+import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-restricted-profile',
@@ -7,12 +8,13 @@ import { UserService } from '../shared/user.service';
   styleUrls: ['./restricted-profile.component.scss']
 })
 export class RestrictedProfileComponent {
-  userDetails: any = {};
+  userData: any;
 
-  constructor(private userService: UserService) {
-    this.userService.getUsers().subscribe((user: any) => {
-      this.userDetails = user;
-      console.log(this.userDetails)
-    })
+  constructor(private loginComponent: LoginComponent, private router: Router) {
+    this.userData = this.loginComponent.userData;
+  }
+
+  logout() {
+    this.router.navigate([' ']);
   }
 }

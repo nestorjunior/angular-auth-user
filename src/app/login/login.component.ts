@@ -9,6 +9,9 @@ import { UserService } from '../shared/user.service';
 export class LoginComponent {
   email: string = '';
   userExists: boolean = false;
+  userData: any;
+  showForm: boolean = true;
+  showUserNotFound: boolean = false;
 
   constructor(private userService: UserService) {}
 
@@ -16,10 +19,12 @@ export class LoginComponent {
     this.userService.validateUser(this.email).subscribe((data: any) => {
       if (data.length > 0) {
         this.userExists = true;
-        console.log('Usuário existe')
+        this.userData = data[0];
+        this.showForm = false;
+        this.showUserNotFound = false;
       } else {
         this.userExists = false;
-        console.log('Usuário não existe')
+        this.showUserNotFound = true;
       }
     })
   }
