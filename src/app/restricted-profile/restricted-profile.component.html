@@ -1,1 +1,5 @@
-<p>Logged in user!</p>
+<div *ngIf="userDetails">
+    <h2>About user</h2>
+    <p>Nome: {{ userDetails.name }}</p>
+    <p>E-mail: {{ userDetails.email }}</p>
+</div>
